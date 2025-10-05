@@ -19,13 +19,13 @@ public class UserCreationTests extends TestBase {
         user.setPhone("+123456789");
         user.setUserStatus(1);
 
-        given().log().all().body(user).contentType("application/json")
+        given().body(user).contentType("application/json")
                 .when().post("user")
-                .then().log().all().statusCode(200);
+                .then().statusCode(200);
 
-        given().log().all().body(user).contentType("application/json")
+        given().body(user).contentType("application/json")
                 .pathParam("username", user.getUsername())
                 .when().get("user/{username}")
-                .then().log().all().statusCode(200);
+                .then().statusCode(200);
     }
 }
