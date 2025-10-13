@@ -1,9 +1,5 @@
 package pl.javastart.restassured.test.ssl;
 
-import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.specification.RequestSpecification;
-import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
