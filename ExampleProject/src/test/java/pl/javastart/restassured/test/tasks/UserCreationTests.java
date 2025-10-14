@@ -26,7 +26,7 @@ public class UserCreationTests extends TestBase {
                 .then()
                 .assertThat().body("code", equalTo(200))
                 .assertThat().body("type", equalTo("unknown"))
-                .assertThat().body("message", equalTo(445))
+                .assertThat().body("message", equalTo("445"))
                 .assertThat().statusCode(200);
 
         given().contentType("application/json")
