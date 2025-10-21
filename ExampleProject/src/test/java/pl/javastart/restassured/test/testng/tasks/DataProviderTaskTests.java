@@ -26,6 +26,7 @@ public class DataProviderTaskTests extends TestBase {
 
     @Test(dataProvider = "petStatus")
     public void givenPetStatusWhenPetIsCreatedThenPetWithPetStatusIsAvailableTest(String petStatus) {
+
         Category category = new Category();
         category.setId(1);
         category.setName("dogs");
@@ -35,18 +36,16 @@ public class DataProviderTaskTests extends TestBase {
         tag.setName("dogs-category");
 
         Pet pet = new Pet();
-        pet.setId(46465);
+        pet.setId(1444);
         pet.setCategory(category);
         pet.setPhotoUrls(Collections.singletonList("http://photos.com/dog1.jpg"));
         pet.setTags(Collections.singletonList(tag));
         pet.setStatus(petStatus);
 
-        String actualPetStatus = given()
-                .body(pet)
-                .when().post("pet")
+        String actualPetStatus = given().body(pet).when().post("pet")
                 .then().statusCode(200).extract().jsonPath().getString("status");
 
-        assertEquals(actualPetStatus, pet.getStatus(), "Pet status is not as expected");
+        assertEquals(actualPetStatus, pet.getStatus(), "Pet status is incorrect");
     }
 
     @DataProvider(name = "petStatus")
