@@ -1,5 +1,6 @@
 package pl.javastart.restassured.tests.user;
 
+import org.assertj.core.api.Assertions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import pl.javastart.restassured.main.pojo.ApiResponse;
@@ -24,9 +25,12 @@ public class CreateUserTests extends SuiteTestBase {
                 .when().post("user")
                 .then().statusCode(200).extract().as(ApiResponse.class);
 
-        assertEquals(apiResponse.getCode(), Integer.valueOf(200), "Code");
-        assertEquals(apiResponse.getType(), "unknown", "Type");
-        assertEquals(apiResponse.getMessage(), user.getId().toString(), "Message");
+        ApiResponse expectedApiResponse = new ApiResponse();
+        expectedApiResponse.setCode(200);
+        expectedApiResponse.setType("unknown");
+        expectedApiResponse.setMessage(user.getId().toString());
+
+        Assertions.assertThat(apiResponse).describedAs("Sent user was different than expected").usingRecursiveComparison().isEqualTo(expectedApiResponse);
     }
 
     @AfterMethod
@@ -35,9 +39,12 @@ public class CreateUserTests extends SuiteTestBase {
                 .when().delete("user/{username}", user.getUsername())
                 .then().statusCode(200).extract().as(ApiResponse.class);
 
-        assertEquals(apiResponse.getCode(), Integer.valueOf(200), "Code");
-        assertEquals(apiResponse.getType(), "unknown", "Type");
-        assertEquals(apiResponse.getMessage(), user.getUsername(), "Message");
+        ApiResponse expectedApiResponse = new ApiResponse();
+        expectedApiResponse.setCode(200);
+        expectedApiResponse.setType("unknown");
+        expectedApiResponse.setMessage(user.getUsername());
+
+        Assertions.assertThat(apiResponse).describedAs("User was not deleted").usingRecursiveComparison().isEqualTo(expectedApiResponse);
 
     }
 }
