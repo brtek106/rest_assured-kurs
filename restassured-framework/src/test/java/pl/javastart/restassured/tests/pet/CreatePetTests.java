@@ -1,27 +1,16 @@
 package pl.javastart.restassured.tests.pet;
 
-import io.restassured.RestAssured;
-import io.restassured.filter.log.RequestLoggingFilter;
-import io.restassured.filter.log.ResponseLoggingFilter;
-import org.aeonbits.owner.ConfigFactory;
 import org.apache.http.HttpStatus;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pl.javastart.restassured.main.pojo.ApiResponse;
-import pl.javastart.restassured.main.pojo.pet.Category;
 import pl.javastart.restassured.main.pojo.pet.Pet;
-import pl.javastart.restassured.main.pojo.pet.Tag;
-import pl.javastart.restassured.main.properties.EnvironmentConfig;
 import pl.javastart.restassured.main.request.configuration.RequestConfigurationBuilder;
 import pl.javastart.restassured.main.test.data.pet.PetTestDataGenerator;
 import pl.javastart.restassured.tests.testbases.SuiteTestBase;
 
-import java.util.Collections;
-
 import static io.restassured.RestAssured.given;
-import static org.testng.Assert.assertEquals;
 
 public class CreatePetTests extends SuiteTestBase {
 
