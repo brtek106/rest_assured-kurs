@@ -1,10 +1,14 @@
 package pl.javastart.restassured.main.pojo;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ApiResponse {
 
     private Integer code;
     private String type;
     private String message;
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     public Integer getCode() {
         return code;
@@ -30,5 +34,11 @@ public class ApiResponse {
         this.message = message;
     }
 
+    public Map<String, Object> getAdditionalProperties() {
+        return additionalProperties;
+    }
 
+    public void setAdditionalProperties(Map<String, Object> additionalProperties) {
+        this.additionalProperties = additionalProperties;
+    }
 }
