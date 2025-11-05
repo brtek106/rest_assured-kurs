@@ -8,7 +8,7 @@ import io.qameta.allure.TmsLink;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pl.javastart.restassured.main.rop.DeletePetEndpoint;
+import pl.javastart.restassured.main.rop.pet.DeletePetEndpoint;
 import pl.javastart.restassured.tests.testbases.SuiteTestBase;
 
 public class DeletePetTests extends SuiteTestBase {

@@ -1,9 +1,10 @@
-package pl.javastart.restassured.main.rop;
+package pl.javastart.restassured.main.rop.user;
 
 import io.qameta.allure.Step;
 import org.apache.http.HttpStatus;
 import pl.javastart.restassured.main.pojo.ApiResponse;
 import pl.javastart.restassured.main.request.configuration.RequestConfigurationBuilder;
+import pl.javastart.restassured.main.rop.BaseEndpoint;
 
 import java.lang.reflect.Type;
 

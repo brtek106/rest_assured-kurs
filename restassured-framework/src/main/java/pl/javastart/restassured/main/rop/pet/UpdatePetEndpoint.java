@@ -1,30 +1,29 @@
-package pl.javastart.restassured.main.rop;
+package pl.javastart.restassured.main.rop.pet;
 
 import io.qameta.allure.Step;
 import org.apache.http.HttpStatus;
-import pl.javastart.restassured.main.pojo.ApiResponse;
-import pl.javastart.restassured.main.pojo.user.User;
+import pl.javastart.restassured.main.pojo.pet.Pet;
 import pl.javastart.restassured.main.request.configuration.RequestConfigurationBuilder;
+import pl.javastart.restassured.main.rop.BaseEndpoint;
 
 import java.lang.reflect.Type;
 
 import static io.restassured.RestAssured.given;
 
-public class CreateUserEndpoint extends BaseEndpoint <CreateUserEndpoint, ApiResponse>{
+public class UpdatePetEndpoint extends BaseEndpoint <UpdatePetEndpoint, Pet>{
 
-    private User user;
+    private Pet pet;
 
     @Override
     protected Type getModelType() {
-        return ApiResponse.class;
+        return Pet.class;
     }
 
-    @Step("Create user")
+    @Step("Update pet")
     @Override
-    public CreateUserEndpoint sendRequest() {
+    public UpdatePetEndpoint sendRequest() {
         response = given().spec(RequestConfigurationBuilder.getDefaultRequestSpecification())
-                .body(user)
-                .when().post("user");
+                .body(pet).when().put("pet");
         return this;
     }
 
@@ -33,8 +32,8 @@ public class CreateUserEndpoint extends BaseEndpoint <CreateUserEndpoint, ApiRes
         return HttpStatus.SC_OK;
     }
 
-    public CreateUserEndpoint setUser(User user) {
-        this.user = user;
+    public UpdatePetEndpoint setPet(Pet pet) {
+        this.pet = pet;
         return this;
     }
 }
